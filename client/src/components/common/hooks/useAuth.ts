@@ -4,17 +4,17 @@ import {getProfile} from '../../../features/users/action-creators';
 import {selectUsers} from '../../../features/users/reducer';
 
 export const useAuth = () => {
-    const {loading, profile} = useAppSelector(selectUsers);
+    const {profileLoading, profile} = useAppSelector(selectUsers);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (!profile.id) {
             dispatch(getProfile());
         }
-    }, []);
+    }, [profile]);
 
     return {
-        loading,
+        loading: profileLoading,
         profile
     };
 };

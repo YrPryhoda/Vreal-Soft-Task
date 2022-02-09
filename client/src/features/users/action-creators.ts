@@ -65,8 +65,8 @@ export const getUsers = createAsyncThunk(
                 method: 'GET',
                 headers: setHeaders()
             });
-
             const data = await response.json();
+
             if (!response.ok) {
                 throw rejectWithValue(data);
             }

@@ -8,6 +8,7 @@ const initialState = {
     loading: true,
     error: {} as SerializedError,
     users: [] as UserInterface[],
+    profileLoading: true,
     profile: {} as UserInterface
 };
 
@@ -45,15 +46,14 @@ export const usersReducer = createReducer(initialState, builder => builder
         state.error = action.payload as SerializedError;
     })
     .addCase(getProfile.pending, (state) => {
-        state.loading = true;
+        state.profileLoading = true;
     })
     .addCase(getProfile.fulfilled, (state, action) => {
-        state.loading = false;
+        state.profileLoading = false;
         state.profile = action.payload;
     })
-    .addCase(getProfile.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as SerializedError;
+    .addCase(getProfile.rejected, (state) => {
+        state.profileLoading = false;
     })
     .addCase(updateUser.pending, (state) => {
         state.loading = true;

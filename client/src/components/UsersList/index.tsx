@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography} from '@mui/material';
 
 import {useAppSelector} from '../../store/hooks';
 import {selectUsers} from '../../features/users/reducer';
@@ -40,7 +40,7 @@ const UsersList = (props: IProps) => {
                 </Table>
             </TableContainer>
         )
-        : <h4>Users list is empty</h4>;
+        : <Typography align={'center'} variant={'h5'} component={'h5'}>Users list is empty</Typography>;
 };
 
 export default UsersList;
